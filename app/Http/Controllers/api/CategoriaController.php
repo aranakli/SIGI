@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
@@ -12,38 +13,53 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        //$categoria = Categoria::all();
+        $categorias = DB::table('categorias')
+            ->select('categorias.*')
+            ->get();
+        return json_encode(['categorias'=>$categorias]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        //$categoria->id = strtoupper($request->id);
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
+        $categoria->save();
+
+        $categorias = DB::table('categorias')
+            ->select('categorias.*')
+            ->get();
+        return json_encode(['categorias'=>$categorias]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $categoria= Categoria::find($id);
+        return json_encode(['categoria' => $categoria]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $categoria= Categoria::find($id);
+        $categoria->tipo = $request->tipo;
+        $categoria->descripcion = $request->descripcion;
+        $categoria->save();
+        $categorias = DB::table('categorias')
+            ->select('categorias.*')
+            ->get();
+        return json_encode(['categorias' => $categorias]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        //
+        $categoria= Categoria::find($id);
+        $categoria->delete();
+
+        $categorias = DB::table('categorias')
+            ->select('categorias.*')
+            ->get();
+        return json_encode(['categorias' => $categorias]);
     }
 }
