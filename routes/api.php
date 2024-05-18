@@ -26,4 +26,4 @@ Route::get('/transacciones', [TransaccionController::class, 'index'])->name('tra
 Route::post('/transacciones', [TransaccionController::class, 'store'])->name('transacciones.store');
 Route::delete('/transacciones/{transaccion}', [TransaccionController::class, 'destroy'])->name('transacciones.destroy');
 Route::put('/transacciones/{transaccion}', [TransaccionController::class, 'update'])->name('transacciones.update');
-Route::get('/transacciones/{transaccion}', [Transaccion::class, 'show'])->name('transacciones.show');
+Route::get('/transacciones/{transaccion}', [TransaccionController::class, 'show'])->name('transacciones.show');
