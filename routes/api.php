@@ -23,17 +23,6 @@ Route::get('/inventarios', [InventarioController::class, 'index'])->name('invent
 Route::delete('/inventarios/{proveedor}', [InventarioController::class, 'destroy'])->name('inventarios.destroy');
 Route::get('/inventarios/{proveedor}', [InventarioController::class, 'show'])->name('inventarios.show');
 Route::put('/inventarios/{proveedor}', [InventarioController::class, 'update'])->name('inventarios.update');
-<?php
-
-use App\Http\Controllers\api\CategoriaController;
-use App\Http\Controllers\api\ProductoController;
-use App\Http\Controllers\api\TransaccionController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
 
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
 Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
@@ -51,4 +40,4 @@ Route::get('/transacciones', [TransaccionController::class, 'index'])->name('tra
 Route::post('/transacciones', [TransaccionController::class, 'store'])->name('transacciones.store');
 Route::delete('/transacciones/{transaccion}', [TransaccionController::class, 'destroy'])->name('transacciones.destroy');
 Route::put('/transacciones/{transaccion}', [TransaccionController::class, 'update'])->name('transacciones.update');
-Route::get('/transacciones/{transaccion}', [Transaccion::class, 'show'])->name('transacciones.show');
+Route::get('/transacciones/{transaccion}', [TransaccionController::class, 'show'])->name('transacciones.show');
