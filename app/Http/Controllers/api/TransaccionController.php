@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Transaccion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +45,7 @@ class TransaccionController extends Controller
         $productos = DB::table('productos')
         ->orderBy('nombre')
         ->get();
-        return json_encode(['transacciones' => $transacciones, 'productos' => $productos]);
+        return json_encode(['transacciones' => $transaccion, 'productos' => $productos]);
     }
 
     public function update(Request $request, $id)

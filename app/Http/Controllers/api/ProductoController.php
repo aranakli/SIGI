@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +45,7 @@ class ProductoController extends Controller
         $categorias = DB::table('categorias')
         ->orderBy('nombre')
         ->get();
-        return json_encode(['productos' => $productos, 'categorias' => $categorias]);
+        return json_encode(['productos' => $producto, 'categorias' => $categorias]);
     }
 
     public function update(Request $request, $id)
