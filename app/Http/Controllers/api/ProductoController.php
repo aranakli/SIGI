@@ -45,7 +45,7 @@ class ProductoController extends Controller
         $categorias = DB::table('categorias')
         ->orderBy('nombre')
         ->get();
-        return json_encode(['productos' => $producto, 'categorias' => $categorias]);
+        return json_encode(['producto' => $producto, 'categorias' => $categorias]);
     }
 
     public function update(Request $request, $id)

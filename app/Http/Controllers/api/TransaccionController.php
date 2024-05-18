@@ -45,7 +45,7 @@ class TransaccionController extends Controller
         $productos = DB::table('productos')
         ->orderBy('nombre')
         ->get();
-        return json_encode(['transacciones' => $transaccion, 'productos' => $productos]);
+        return json_encode(['transaccion' => $transaccion, 'productos' => $productos]);
     }
 
     public function update(Request $request, $id)
