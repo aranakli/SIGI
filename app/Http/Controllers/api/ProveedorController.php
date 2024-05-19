@@ -26,41 +26,42 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        $proveedores = new Proveedor();
-        $proveedores->name = $request->name;
-        $proveedores->description = $request->description;
-        $proveedores->save();
-        return json_encode(['proveedor' => $proveedores]);
+        $proveedor = new Proveedor();
+        $proveedor->nombre = $request->nombre;
+        $proveedor->contacto = $request->contacto;
+        $proveedor->save();
+
+        return json_encode(['proveedor' => $proveedor]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        $proveedores = Proveedor::find($id);
-        return json_encode(['proveedor' => $proveedores]);
+        $proveedor = Proveedor::find($id);
+        return json_encode(['proveedor' => $proveedor]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        $proveedores = Proveedor::find($id);
-        $proveedores->name = $request->name;
-        $proveedores->description = $request->description;
-        $proveedores->save();
-        return json_encode(['proveedor' => $proveedores]);
+        $proveedor = Proveedor::find($id);
+        $proveedor->nombre = $request->nombre;
+        $proveedor->contacto = $request->contacto;
+        $proveedor->save();
+        return json_encode(['proveedor' => $proveedor]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        $proveedores = Proveedor::find($id);
-        $proveedores->delete();
+        $proveedor = Proveedor::find($id);
+        $proveedor->delete();
         $proveedores = DB::table('proveedores')
             ->select('proveedores.*')
             ->get();
