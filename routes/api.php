@@ -8,9 +8,9 @@ use App\Http\Controllers\api\TransaccionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
 
 Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
 Route::get('/proveedores', [ProveedorController::class, 'index'])->name('proveedores.index');
@@ -20,9 +20,9 @@ Route::put('/proveedores/{proveedor}', [ProveedorController::class, 'update'])->
 
 Route::post('/inventarios', [InventarioController::class, 'store'])->name('inventarios.store');
 Route::get('/inventarios', [InventarioController::class, 'index'])->name('inventarios.index');
-Route::delete('/inventarios/{proveedor}', [InventarioController::class, 'destroy'])->name('inventarios.destroy');
-Route::get('/inventarios/{proveedor}', [InventarioController::class, 'show'])->name('inventarios.show');
-Route::put('/inventarios/{proveedor}', [InventarioController::class, 'update'])->name('inventarios.update');
+Route::delete('/inventarios/{inventario}', [InventarioController::class, 'destroy'])->name('inventarios.destroy');
+Route::get('/inventarios/{inventario}', [InventarioController::class, 'show'])->name('inventarios.show');
+Route::put('/inventarios/{inventario}', [InventarioController::class, 'update'])->name('inventarios.update');
 
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
 Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
