@@ -65,6 +65,6 @@ class ProveedorController extends Controller
         $proveedores = DB::table('proveedores')
             ->select('proveedores.*')
             ->get();
-        return json_encode(['proveedores' => $proveedores]);
+        return json_encode(['proveedores' => $proveedores, 'success' => true]);
     }
 }

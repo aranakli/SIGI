@@ -41,7 +41,7 @@ class InventarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
     {
         $inventario = Inventario::find($id);
         $proveedores = DB::table('proveedores')
@@ -50,13 +50,13 @@ class InventarioController extends Controller
         $productos = DB::table('productos')
             ->orderBy('nombre')
             ->get();
-        return json_encode(['inventario' => $inventario, 'proevedores' => $proveedores, 'productos' => $productos ]);
+        return json_encode(['inventario' => $inventario, 'proveedores' => $proveedores, 'productos' => $productos ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
         $inventario = Inventario::find($id);
         $inventario->producto_id = $request->producto_id;
@@ -69,7 +69,7 @@ class InventarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
         $inventario = Inventario::find($id);
         $inventario->delete();
