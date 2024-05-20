@@ -72,6 +72,6 @@ class ProductoController extends Controller
             ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
             ->select('productos.*', 'categorias.nombre as categoria_nombre')
             ->get();
-        return json_encode(['productos' => $productos]);
+        return json_encode(['productos' => $productos, 'success' => true]);
     }
 }

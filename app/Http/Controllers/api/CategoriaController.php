@@ -61,6 +61,6 @@ class CategoriaController extends Controller
         $categorias = DB::table('categorias')
             ->select('categorias.*')
             ->get();
-        return json_encode(['categorias' => $categorias]);
+        return json_encode(['categorias' => $categorias, 'success' => true]);
     }
 }

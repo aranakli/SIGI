@@ -72,6 +72,6 @@ class TransaccionController extends Controller
             ->join('productos', 'transacciones.producto_id', '=', 'productos.id')
             ->select('transacciones.*', 'productos.nombre')
             ->get();
-        return json_encode(['transacciones' => $transacciones]);
+        return json_encode(['transacciones' => $transacciones, 'success' => true]);
     }
 }
