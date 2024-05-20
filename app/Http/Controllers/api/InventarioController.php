@@ -50,7 +50,7 @@ class InventarioController extends Controller
         $productos = DB::table('productos')
             ->orderBy('nombre')
             ->get();
-        return json_encode(['inventario' => $inventario, 'proevedores' => $proveedores, 'productos' => $productos ]);
+        return json_encode(['inventario' => $inventario, 'proveedores' => $proveedores, 'productos' => $productos ]);
     }
 
     /**
