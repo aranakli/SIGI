@@ -17,7 +17,7 @@ class ProductoController extends Controller
         //$producto = Producto::all();
         $productos = DB::table('productos')
             ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
-            ->select('productos.*', 'categorias.nombre')
+            ->select('productos.*', 'categorias.nombre as categoria_nombre')
             ->get();
         return json_encode(['productos'=>$productos]);
     }
@@ -34,7 +34,7 @@ class ProductoController extends Controller
 
         $productos = DB::table('productos')
             ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
-            ->select('productos.*', 'categorias.nombre')
+            ->select('productos.*', 'categorias.nombre as categoria_nombre')
             ->get();
         return json_encode(['productos'=>$productos]);
     }
@@ -58,7 +58,7 @@ class ProductoController extends Controller
         $producto->save();
         $productos = DB::table('productos')
             ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
-            ->select('productos.*', 'categorias.nombre')
+            ->select('productos.*', 'categorias.nombre as categoria_nombre')
             ->get();
         return json_encode(['productos' => $productos]);
     }
@@ -70,7 +70,7 @@ class ProductoController extends Controller
 
         $productos = DB::table('productos')
             ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
-            ->select('productos.*', 'categorias.nombre')
+            ->select('productos.*', 'categorias.nombre as categoria_nombre')
             ->get();
         return json_encode(['productos' => $productos]);
     }
