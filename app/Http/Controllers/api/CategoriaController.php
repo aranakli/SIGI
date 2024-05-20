@@ -44,7 +44,7 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         $categoria= Categoria::find($id);
-        $categoria->tipo = $request->tipo;
+        $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;
         $categoria->save();
         $categorias = DB::table('categorias')
